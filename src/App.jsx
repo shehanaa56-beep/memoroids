@@ -16,6 +16,7 @@ import Moving from './components/Moving';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import AdminDashboard from './components/AdminDashboard';
+import InstallBanner from './components/InstallBanner';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Routes>
       <Footer />
+      <InstallBanner />
     </div>
   );
 }
