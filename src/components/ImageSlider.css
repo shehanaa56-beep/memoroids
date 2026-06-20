@@ -1,0 +1,25 @@
+.image-slider img {
+  width: 100%;
+  height: 900px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #d4a5a5;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .image-slider img {
+    height: 500px;
+  }
+}
+
+/* Tablet responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .image-slider img {
+    height: 700px;
+  }
+}

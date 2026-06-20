@@ -1,0 +1,121 @@
+.gallery {
+  background-color: #eadbdf; /* light beige background */
+  padding: 3rem 2rem;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.gallery h1 {
+  font-family: 'Georgia', serif;
+  font-weight: 900;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #000000;
+}
+
+.subheading {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2rem;
+  color: #666666;
+  margin-bottom: 2rem;
+}
+
+.subheading a {
+  color: #2a5d5d;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.subheading a:hover {
+  text-decoration: underline;
+}
+
+.gallery-images {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  justify-items: center;
+}
+
+.gallery-images img {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-images img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gallery {
+    padding: 2rem 1rem;
+  }
+
+  .gallery h1 {
+    font-size: 2.5rem;
+  }
+
+  .subheading {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .gallery-images {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    padding: 1.5rem 1rem;
+  }
+
+  .gallery h1 {
+    font-size: 2rem;
+  }
+
+  .subheading {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .gallery-images {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    padding: 0 0.25rem;
+  }
+
+  .modal-image {
+    max-width: 95%;
+    max-height: 80%;
+  }
+}

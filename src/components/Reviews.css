@@ -1,0 +1,344 @@
+.draggable-card-container {
+  position: relative;
+  min-height: 600px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #fADDE1; /* warm cream background */
+  border-radius: 12px;
+  margin-bottom: 3rem;
+  padding: 2rem;
+}
+
+.draggable-card-body {
+  position: absolute;
+  cursor: grab;
+  transition: transform 0.2s ease;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border: 2px solid #ddd;
+}
+
+.draggable-card-body:active {
+  cursor: grabbing;
+}
+
+.draggable-card-body img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
+
+.draggable-card-body h3 {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4a3c31;
+  font-family: 'Georgia', serif;
+}
+
+.draggable-card-quote {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #d88c8c;
+  max-width: 400px;
+  z-index: 10;
+}
+
+.card-1 {
+  top: 40px;
+  left: 20%;
+  transform: rotate(-5deg);
+}
+
+.card-2 {
+  top: 160px;
+  left: 25%;
+  transform: rotate(-7deg);
+}
+
+.card-3 {
+  top: 20px;
+  left: 40%;
+  transform: rotate(8deg);
+}
+
+.card-4 {
+  top: 128px;
+  left: 55%;
+  transform: rotate(10deg);
+}
+
+.card-5 {
+  top: 80px;
+  right: 35%;
+  transform: rotate(2deg);
+}
+
+.card-6 {
+  top: 96px;
+  left: 45%;
+  transform: rotate(-7deg);
+}
+
+.card-7 {
+  top: 32px;
+  left: 30%;
+  transform: rotate(4deg);
+}
+
+@media (max-width: 768px) {
+  .draggable-card-container {
+    min-height: 450px;
+    padding: 1rem;
+  }
+
+  .draggable-card-body {
+    padding: 10px;
+  }
+
+  .draggable-card-body img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .card-1 { top: 20px; left: calc(50% - 100px); transform: rotate(-6deg); }
+  .card-2 { top: 30px; left: calc(50% - 80px); transform: rotate(8deg); }
+  .card-3 { top: 40px; left: calc(50% - 90px); transform: rotate(-4deg); }
+  .card-4 { top: 55px; left: calc(50% - 110px); transform: rotate(10deg); }
+  .card-5 { top: 65px; left: calc(50% - 85px); transform: rotate(-8deg); }
+  .card-6 { top: 75px; left: calc(50% - 95px); transform: rotate(5deg); }
+  .card-7 { top: 85px; left: calc(50% - 105px); transform: rotate(-3deg); }
+
+  .draggable-card-quote {
+    font-size: 1.5rem;
+  }
+}
+
+.reviews-container {
+  max-width: 3000px;
+  max-height: 8000px;
+  margin: 0 auto 4rem auto; /* Added bottom margin to prevent overlap with footer */
+  padding: 4rem 2rem;
+  background-color: #fADDE1; /* warm cream background */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Georgia', serif;
+  color: #4a3c31; /* dark brown text */
+}
+
+.reviews-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.review-card {
+  background-color: #fff6e8;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+}
+
+.review-rating {
+  color: #d88c8c; /* dusty rose */
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.star {
+  margin-right: 0.1rem;
+}
+
+.review-text {
+  font-size: 1.1rem;
+  color: #5a4a3a;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.review-name {
+  font-weight: bold;
+  color: #d88c8c;
+  text-align: right;
+}
+
+.image-reviews-title {
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+  margin: 3rem 0 2rem 0;
+  color: #4a3c31;
+}
+
+.image-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: .5rem;
+  row-gap: 2rem;
+  margin-bottom: 4rem; /* Increased bottom margin to prevent footer overlap */
+}
+
+@media (max-width: 1024px) {
+  .image-reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .image-reviews-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.image-review-card {
+  position: relative;
+  border-radius: 25px;
+  overflow: visible;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(135deg, #fff6e8, #f9e4c8);
+  border: none;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.image-review-card::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(135deg, #fb6f92, #fce6e1);
+  border-radius: 35px;
+  z-index: -1;
+}
+
+.image-review-card:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.image-review-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* Additional Mobile responsiveness for Reviews */
+@media (max-width: 768px) {
+  .reviews-container {
+    padding: 3rem 1rem;
+  }
+
+  .reviews-title {
+    font-size: 2rem;
+  }
+
+  .reviews-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .review-card {
+    padding: 1.5rem;
+  }
+
+  .review-rating {
+    font-size: 1rem;
+  }
+
+  .review-text {
+    font-size: 1rem;
+  }
+
+  .image-reviews-title {
+    font-size: 1.8rem;
+    margin: 2rem 0 1.5rem 0;
+  }
+
+  .image-reviews-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .image-review-card img {
+    height: 350px;
+  }
+
+  .modal-image {
+    max-width: 95%;
+    max-height: 85%;
+    transform: scale(1);
+  }
+}
+
+/* Additional Tablet responsiveness for Reviews */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .reviews-container {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .reviews-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.8rem;
+  }
+
+  .image-reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+  }
+
+  .image-review-card img {
+    height: 380px;
+  }
+}

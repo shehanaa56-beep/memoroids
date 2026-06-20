@@ -1,0 +1,54 @@
+.moving-slider {
+  overflow: hidden;
+  width: 100%;
+  background-color: #fff;
+  padding: 0.5rem 0;
+}
+
+.moving-track {
+  display: flex;
+  width: calc(400%);
+  animation: scroll 20s linear infinite;
+}
+
+.moving-image {
+  width: 400px;
+  height: 600px;
+  object-fit: cover;
+  margin-right: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .moving-image {
+    width: 160px;
+    height: 240px;
+    margin-right: 0.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .moving-image {
+    width: 120px;
+    height: 180px;
+    margin-right: 0.25rem;
+  }
+}
+
+/* Tablet responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .moving-image {
+    width: 250px;
+    height: 375px;
+  }
+}

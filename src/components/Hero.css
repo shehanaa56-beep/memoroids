@@ -1,0 +1,152 @@
+.hero {
+  background-image: url('../assets/memo.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 12rem 2rem; /* increased height */
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1); /* lighter glass effect overlay */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-family: 'Georgia', serif;
+  font-size: 4.5rem; /* increased text size */
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #fff; /* white main text */
+}
+
+.hero-content .highlight {
+  color:#956969;
+  font-size: 90PX; /* soft pink highlight */
+}
+
+.hero-content p {
+  font-size: 1.5rem; /* increased text size */
+  color: #544040; /* white paragraph text */
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.shop-btn {
+  background-color: #d4a5a5; /* soft pink background */
+  color: #000; /* black text */
+}
+.empty-btn {
+  background-color: #b9aeae; /* white background */
+  border: 2px solid #d4a5a5; /* pink border */
+  width: 100px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .hero {
+    padding: 6rem 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+    line-height: 1.3;
+  }
+
+  .hero-content .highlight {
+    font-size: 2.4rem;
+    display: block; /* Force highlight to start on new line for better spacing */
+    margin-top: 0.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .btn {
+    padding: 0.75rem 2rem;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 280px; /* Keep buttons at readable size on wide screens */
+    box-sizing: border-box;
+  }
+
+  .empty-btn {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 4.5rem 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content .highlight {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+/* Tablet responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero {
+    padding: 8rem 2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 3.2rem;
+  }
+
+  .hero-content .highlight {
+    font-size: 3.6rem;
+  }
+
+  .hero-content p {
+    font-size: 1.3rem;
+  }
+}

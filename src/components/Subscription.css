@@ -1,0 +1,121 @@
+.subscription {
+  background: linear-gradient(135deg, #fb6f92, #fce6e1);
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.subscription-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.email-icon {
+  font-size: 2.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  line-height: 60px;
+  margin: 0 auto 1rem auto;
+}
+
+.subscription h2 {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.subscription p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #d4a5a5;
+}
+
+.subscription-form {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.subscription-form input[type="email"] {
+  padding: 0.8rem 1rem;
+  border-radius: 25px;
+  border: none;
+  width: 60%;
+  font-size: 1rem;
+}
+
+.subscription-form button {
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  border: none;
+  background-color: #d4a5a5;
+  color: #2f4f4f;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.message {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .subscription {
+    padding: 2rem 1rem;
+  }
+
+  .subscription-content {
+    max-width: 100%;
+  }
+
+  .email-icon {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 2rem;
+  }
+
+  .subscription h2 {
+    font-size: 1.8rem;
+  }
+
+  .subscription p {
+    font-size: 1rem;
+  }
+
+  .subscription-form {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .subscription-form input[type="email"] {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+  }
+
+  .subscription-form button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Tablet responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .subscription {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .subscription-content {
+    max-width: 500px;
+  }
+
+  .subscription h2 {
+    font-size: 1.9rem;
+  }
+}
