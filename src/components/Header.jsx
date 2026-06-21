@@ -16,6 +16,15 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-container">
+        <div className="header-camera-icon">
+          <svg width="40" height="40" viewBox="0 0 36 36" fill="none">
+            <path d="M7 13 C7 11, 9 9, 12 9 H14 C15 7, 16 6, 18 6 C20 6, 21 7, 22 9 H24 C27 9, 29 11, 29 13 V25 C29 27, 27 29, 24 29 H12 C9 29, 7 27, 7 25 Z" stroke="#9a5858" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="#fffaf8"/>
+            <circle cx="18" cy="19" r="6" stroke="#9a5858" strokeWidth="2.2" fill="white"/>
+            <path d="M18 21.5 C17.3 20.8, 15.2 19.1, 15.2 17.6 C15.2 16.4, 16.2 15.5, 17.3 15.5 C17.9 15.5, 18 15.8, 18 15.8 C18 15.8, 18.1 15.5, 18.7 15.5 C19.8 15.5, 20.8 16.4, 20.8 17.6 C20.8 19.1, 18.7 20.8, 18 21.5 Z" fill="#e3627d"/>
+            <circle cx="12" cy="13" r="1.5" fill="#9a5858"/>
+          </svg>
+        </div>
+        
         <div className="logo">
           <h1>Memoroids</h1>
           <span>BY SHEHANA</span>
@@ -130,8 +139,10 @@ const Header = () => {
           </div>
         </nav>
 
-        <div className="menu-icon" onClick={toggleMenu}>
-          <span>{isMenuOpen ? '✕' : '☰'}</span>
+        <div className={`menu-icon ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
         </div>
       </div>
     </header>

@@ -1,170 +1,472 @@
-.about-container {
-  width: 100%;
+/* ────────────────────────────────────────
+   ABOUT PAGE — Scrapbook Style
+──────────────────────────────────────── */
+.about-page {
+  background-color: #fff0f2;
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,0.45) 50%, transparent 50%),
+    linear-gradient(rgba(255,255,255,0.45) 50%, transparent 50%);
+  background-size: 28px 28px;
   min-height: 100vh;
-  margin: 0;
-  padding: 4rem 2rem;
-   background: linear-gradient(135deg, #8e1936, #fce6e1);
-  font-family: 'Georgia', serif;
-  color: #462a0fff;
+  padding: 5rem 1rem 0 1rem;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ── Background doodles ── */
+.ab-doodle {
+  position: absolute;
+  pointer-events: none;
+  color: #f497a9;
+  z-index: 1;
+}
+.ab-doodle-heart-tl { font-size: 1.8rem; top: 5.5rem; left: 2%;  opacity: 0.45; transform: rotate(-10deg); }
+.ab-doodle-heart-tr { font-size: 1.4rem; top: 5.5rem; right: 3%; opacity: 0.4;  transform: rotate(12deg);  }
+.ab-doodle-heart-ml { font-size: 1.2rem; top: 55%;   left: 1%;  opacity: 0.35; }
+.ab-doodle-sparkle-1{ font-size: 1rem;   top: 5rem;   left: 28%; opacity: 0.65; }
+.ab-doodle-sparkle-2{ font-size: 0.85rem; top: 5rem;  right: 20%; opacity: 0.65; }
+.ab-doodle-sparkle-3{ font-size: 0.9rem;  top: 12rem; right: 5%;  opacity: 0.5; }
+.ab-doodle-camera {
+  position: absolute;
+  /* push camera below the heading on mobile so it doesn't overlap text */
+  top: auto;
+  bottom: 38%;
+  left: 2%;
+  width: 44px;
+  opacity: 0.7;
+  transform: rotate(-8deg);
+  z-index: 1;
+}
+.ab-doodle-camera svg { width: 100%; }
+
+/* ── Header ── */
+.ab-header {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  margin: 0 auto 1.5rem auto;
+  text-align: center;
+}
+
+.ab-label {
+  font-family: 'Caveat', cursive;
+  font-size: 1.7rem;
+  color: #d57a8f;
+  margin: 0 0 0.5rem 0;
+}
+
+.ab-header-grid {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
-.about-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.ab-heading-col {
+  flex: 1;
+  min-width: 200px;
   text-align: center;
-  margin-bottom: 3rem;
+}
+
+.ab-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem;   /* smaller base for phones */
+  font-weight: 800;
+  color: #4a3c3c;
+  margin: 0;
+  line-height: 1.3;
+}
+.ab-title-pink { color: #d57a8f; }
+.ab-title-heart { color: #f497a9; font-weight: 400; }
+
+/* Hide polaroid beside heading on tiny screens */
+@media (max-width: 479px) {
+  .ab-header-polaroid-col { display: none; }
+  .ab-title { font-size: 1.6rem; }
+}
+
+@media (min-width: 480px) {
+  .ab-title { font-size: 1.75rem; }
+}
+
+@media (min-width: 769px) {
+  .ab-title { font-size: 2.8rem; }
+  .ab-doodle-camera { bottom: auto; top: 6.5rem; width: 60px; opacity: 0.85; }
+}
+
+/* Header polaroid */
+.ab-header-polaroid-col { flex-shrink: 0; }
+
+.ab-header-polaroid {
+  background: white;
+  padding: 6px 6px 18px 6px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  transform: rotate(4deg);
+  border: 1px solid #f0e0e0;
+  border-radius: 2px;
+  position: relative;
+  width: 130px;
+}
+
+.ab-header-polaroid img {
   width: 100%;
-  max-width: 800px;
-}
-
-.about-header h1 {
-  font-size: 2.5rem;
-  font-weight: 900;
-  margin-bottom: 1.5rem;
-  color: #462a0fff;
-  text-align: center;
-}
-
-.about-image {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
+  height: 110px;
   object-fit: cover;
-  margin: 0 auto 1.5rem;
   display: block;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-.about-header p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  max-width: 600px;
-  margin: 0 auto;
-  color: #4a3c31;
-  text-align: justify;
+.ab-polaroid-clip {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
 }
 
-.about-mission {
-  background-color: #fff6e8;
-  padding: 2rem 3rem;
-  border-radius: 10px;
+/* ── Middle row ── */
+.ab-middle-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  max-width: 560px;
+  margin: 0 auto 1.8rem auto;
+  position: relative;
+  z-index: 2;
+  flex-wrap: nowrap;
+}
+
+/* Sticky note */
+.ab-sticky-note {
+  background: #fffde7;
+  background-image: linear-gradient(#e8d89a 1px, transparent 1px);
+  background-size: 100% 16px;
+  border: 1px solid #e8d0a0;
+  border-radius: 4px;
+  padding: 1.2rem 0.4rem 0.6rem 0.4rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transform: rotate(-5deg);
+  position: relative;
+  flex: 0 0 76px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  color: #462a0fff;
-  border: 1px solid rgba(255,255,255,0.2);
+  font-family: 'Caveat', cursive;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #7d4444;
+  line-height: 1.35;
+}
+
+@media (min-width: 420px) {
+  .ab-sticky-note { font-size: 0.95rem; flex: 0 0 100px; }
+}
+
+.ab-sticky-clip {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(10deg);
+}
+
+.ab-sticky-heart {
+  display: block;
+  font-size: 1rem;
+  color: #e3627d;
+  margin-top: 0.5rem;
+}
+
+/* Circular photo */
+.ab-photo-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ab-circle-photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #f9b8c6;
+  box-shadow: 0 6px 20px rgba(227, 98, 125, 0.25);
+}
+
+@media (min-width: 420px) {
+  .ab-circle-photo { width: 155px; height: 155px; }
+}
+
+@media (min-width: 769px) {
+  .ab-circle-photo { width: 200px; height: 200px; }
+}
+
+.ab-circle-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Flower decorations around photo */
+.ab-flower {
+  position: absolute;
+  font-size: 1.4rem;
+  color: #f4a0b5;
+  z-index: 3;
+}
+.ab-flower-tl { top: -6px;  left: -6px;  transform: rotate(-20deg); }
+.ab-flower-tr { top: -6px;  right: -6px; transform: rotate(20deg); }
+.ab-flower-bl { bottom: -6px; left: -6px; transform: rotate(160deg); }
+.ab-flower-br { bottom: -6px; right: -6px;transform: rotate(-160deg); }
+
+/* Speech bubble */
+.ab-speech-bubble {
+  background: white;
+  border: 1.5px solid #f5c4ce;
+  border-radius: 14px;
+  border-bottom-left-radius: 4px;
+  padding: 0.65rem 0.6rem;
+  box-shadow: 0 4px 12px rgba(213,122,143,0.1);
+  flex: 0 0 86px;
+  position: relative;
+}
+
+.ab-speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 12px;
+  border-width: 9px 7px 0 0;
+  border-style: solid;
+  border-color: #f5c4ce transparent transparent transparent;
+}
+.ab-speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 14px;
+  border-width: 7px 5px 0 0;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+.ab-speech-bubble p {
+  font-family: 'Caveat', cursive;
+  font-size: 0.75rem;
+  color: #7c4a4a;
+  margin: 0;
+  line-height: 1.35;
+  font-style: italic;
+  text-align: center;
+}
+
+@media (min-width: 420px) {
+  .ab-speech-bubble { flex: 0 0 108px; }
+  .ab-speech-bubble p { font-size: 0.88rem; }
+}
+
+/* ── Bio box with bow ── */
+.ab-bio-container {
+  position: relative;
+  max-width: 520px;
+  margin: 0 auto 3rem auto;
+  z-index: 2;
+}
+
+.ab-bow {
+  text-align: center;
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.ab-bio-box {
+  background: white;
+  border: 1.5px dashed #f5c4ce;
+  border-radius: 18px;
+  padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+  box-shadow: 0 6px 18px rgba(213,122,143,0.08);
+  position: relative;
+}
+
+.ab-bio-box p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  color: #4a3c3c;
+  line-height: 1.7;
+  text-align: center;
+  margin: 0;
+}
+
+.ab-bio-heart-r {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #f5c4ce;
+  font-size: 1.4rem;
+}
+.ab-bio-heart-l {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  color: #f5c4ce;
+  font-size: 1.1rem;
+}
+
+/* ── Mission section ── */
+.ab-mission-section {
+  background: rgba(255, 220, 230, 0.45);
+  border-radius: 24px;
+  margin: 0 auto 0 auto;
+  padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+  max-width: 600px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.ab-mission-deco-left,
+.ab-mission-deco-right {
+  flex-shrink: 0;
+  display: none;
+}
+
+@media (min-width: 500px) {
+  .ab-mission-deco-left { display: block; }
+}
+
+@media (min-width: 650px) {
+  .ab-mission-deco-right { display: block; }
+}
+
+.ab-mission-content {
+  flex: 1;
+  text-align: center;
+}
+
+/* Mission badge */
+.ab-mission-badge {
+  display: inline-block;
+  background: white;
+  border: 2px solid #f5c4ce;
+  border-radius: 30px;
+  padding: 0.45rem 1.8rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #4a3c3c;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 4px 10px rgba(213,122,143,0.1);
+}
+
+.ab-mission-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.98rem;
+  color: #4a3c3c;
+  line-height: 1.65;
+  margin: 0 0 2rem 0;
+}
+
+/* 4 pillars */
+.ab-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem 0.8rem;
+}
+
+@media (min-width: 500px) {
+  .ab-pillars { grid-template-columns: repeat(4, 1fr); }
+}
+
+.ab-pillar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 600px;
+  gap: 0.5rem;
 }
 
-.about-mission h2 {
-  font-size: 1.8rem;
-  font-weight: 900;
-  margin-bottom: 1rem;
-  color: #462a0fff;
+.ab-pillar-icon {
+  width: 52px;
+  height: 52px;
+  background: white;
+  border: 2px solid #f5c4ce;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(213,122,143,0.12);
+}
+
+.ab-pillar-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ab-pillar span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4a3c3c;
   text-align: center;
+  line-height: 1.3;
 }
 
-.about-mission p {
+/* Mission right polaroid */
+.ab-mission-polaroid {
+  background: white;
+  padding: 5px 5px 16px 5px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+  transform: rotate(-5deg);
+  border: 1px solid #f0e0e0;
+  border-radius: 2px;
+  width: 90px;
+  position: relative;
+}
+
+.ab-mission-tape {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(3deg);
+  width: 40px;
+  height: 12px;
+  background-color: rgba(244,180,194,0.8);
+  background-image: radial-gradient(rgba(255,255,255,0.7) 20%, transparent 20%);
+  background-size: 5px 5px;
+}
+
+.ab-mission-polaroid img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Footer banner ── */
+.ab-footer-banner {
+  margin-top: 3rem;
+  background-color: #fce8ee;
+  border-top: 1.5px dashed #f5c4ce;
+  padding: 1.1rem 1.5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #5c4040;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-sizing: border-box;
+}
+
+.ab-footer-heart {
+  color: #e3627d;
   font-size: 1.1rem;
-  color: #6b5e4a;
-  max-width: 500px;
-  margin: 0 auto;
-  line-height: 1.8;
-  text-align: justify;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .about-container {
-    padding: 3rem 1.25rem;
-  }
-
-  .about-header h1 {
-    font-size: 1.7rem;
-    line-height: 1.3;
-  }
-
-  .about-image {
-    width: 180px;
-    height: 180px;
-  }
-
-  .about-header p {
-    font-size: 0.95rem;
-    max-width: 100%;
-    line-height: 1.6;
-  }
-
-  .about-mission {
-    padding: 1.5rem 1.25rem;
-    max-width: 100%;
-  }
-
-  .about-mission h2 {
-    font-size: 1.4rem;
-  }
-
-  .about-mission p {
-    font-size: 0.95rem;
-    max-width: 100%;
-    line-height: 1.6;
-  }
-}
-
-@media (max-width: 480px) {
-  .about-container {
-    padding: 2rem 1rem;
-  }
-
-  .about-header h1 {
-    font-size: 1.45rem;
-  }
-
-  .about-image {
-    width: 150px;
-    height: 150px;
-  }
-
-  .about-header p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-
-  .about-mission h2 {
-    font-size: 1.25rem;
-  }
-
-  .about-mission p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-}
-
-/* Tablet responsiveness */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .about-container {
-    padding: 3rem 1.5rem;
-  }
-
-  .about-header h1 {
-    font-size: 2.2rem;
-  }
-
-  .about-image {
-    width: 250px;
-    height: 250px;
-  }
-
-  .about-mission {
-    padding: 2rem 2rem;
-    max-width: 500px;
-  }
 }
