@@ -1,121 +1,346 @@
-.gallery {
-  background-color: #eadbdf; /* light beige background */
-  padding: 3rem 2rem;
-  text-align: center;
+/* Container & Background */
+.gallery-page {
+  position: relative;
+  background-color: #fff1f3;
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,0.45) 50%, transparent 50%),
+    linear-gradient(rgba(255,255,255,0.45) 50%, transparent 50%);
+  background-size: 28px 28px;
   min-height: 100vh;
+  padding: 1.5rem 1rem 4rem 1rem;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.gallery h1 {
-  font-family: 'Georgia', serif;
-  font-weight: 900;
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  color: #000000;
+/* Header */
+.gl-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto 2.2rem auto;
 }
 
-.subheading {
-  font-family: 'Arial', sans-serif;
-  font-size: 1.2rem;
-  color: #666666;
-  margin-bottom: 2rem;
+.gl-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #4a3c3c;
+  line-height: 1.25;
+  margin: 0 0 1rem 0;
 }
 
-.subheading a {
-  color: #2a5d5d;
+.gl-journey {
+  font-family: 'Caveat', cursive;
+  font-size: 2.8rem;
+  color: #d57a8f;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.gl-title-heart {
+  color: #f48d9f;
+  font-weight: 400;
+}
+
+/* Doodles */
+.gl-doodle {
+  position: absolute;
+  pointer-events: none;
+  color: #f4a0b5;
+  z-index: 1;
+}
+
+.gl-doodle-hearts-left {
+  left: -20px;
+  top: 10px;
+  font-size: 1.6rem;
+  transform: rotate(-15deg);
+  opacity: 0.7;
+}
+
+.gl-doodle-hearts-left .tiny-heart {
+  font-size: 0.9rem;
+  margin-left: 4px;
+}
+
+.gl-doodle-plane {
+  left: -40px;
+  top: 60px;
+  transform: rotate(-10deg);
+  opacity: 0.85;
+}
+
+.gl-doodle-hearts-right {
+  right: -20px;
+  top: 15px;
+  font-size: 1.4rem;
+  transform: rotate(12deg);
+  opacity: 0.65;
+}
+
+.gl-doodle-hearts-right .tiny-heart {
+  font-size: 0.8rem;
+  margin: 0 3px;
+}
+
+.gl-doodle-sparkles {
+  right: -35px;
+  top: 75px;
+  transform: rotate(-15deg);
+  opacity: 0.75;
+}
+
+/* Instagram Pill Banner */
+.gl-instagram-banner {
+  background-color: #fff6e8;
+  border: 1.5px dashed #f5c4ce;
+  border-radius: 20px;
+  padding: 0.75rem 1.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(213, 122, 143, 0.08);
+}
+
+.gl-banner-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  color: #5c4a4a;
+  margin: 0;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.gl-insta-link {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  color: #d57a8f !important;
   text-decoration: none;
-  font-weight: bold;
+  font-size: 1.05rem;
 }
 
-.subheading a:hover {
+.gl-insta-link:hover {
   text-decoration: underline;
+}
+
+.gl-banner-badge {
+  flex-shrink: 0;
+}
+
+.gl-badge-speech {
+  background-color: white;
+  border: 1.2px solid #f5c4ce;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #e3627d;
+  box-shadow: 0 2px 6px rgba(213, 122, 143, 0.1);
+  position: relative;
+}
+
+/* Speech bubble tip */
+.gl-badge-speech::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 3px;
+  border-width: 6px 5px 0 0;
+  border-style: solid;
+  border-color: #f5c4ce transparent transparent transparent;
+  transform: rotate(-25deg);
+}
+
+.gl-badge-speech::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 4px;
+  border-width: 5px 4px 0 0;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  transform: rotate(-25deg);
+}
+
+/* Image Grid */
+.gallery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .gallery-images {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  justify-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
 }
 
-.gallery-images img {
+@media (min-width: 600px) {
+  .gallery-images {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .gallery-images {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.gl-image-card {
+  background-color: white;
+  padding: 6px 6px 16px 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border: 1px solid #ebd7d0;
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.gl-image-card img {
   width: 100%;
-  max-width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 12px;
+  display: block;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 2px;
 }
 
-.gallery-images img:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+.gl-image-card:hover {
+  transform: translateY(-4px) rotate(1deg);
+  box-shadow: 0 8px 20px rgba(213, 122, 143, 0.15);
 }
 
-.modal {
+/* Modal */
+.gl-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(26, 18, 18, 0.85);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-.modal-image {
+.gl-modal-image {
   max-width: 90%;
-  max-height: 90%;
+  max-height: 85%;
   object-fit: contain;
+  border: 8px solid white;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .gallery {
-    padding: 2rem 1rem;
+/* Tablet & Desktop Sizing scale-up */
+@media (min-width: 769px) {
+  .gallery-page {
+    padding: 3rem 2rem 5rem 2rem;
   }
 
-  .gallery h1 {
-    font-size: 2.5rem;
+  .gl-title {
+    font-size: 2.8rem;
   }
 
-  .subheading {
+  .gl-journey {
+    font-size: 3.8rem;
+  }
+
+  .gl-instagram-banner {
+    padding: 0.9rem 2.2rem;
+  }
+
+  .gl-banner-text {
+    font-size: 0.95rem;
+  }
+
+  .gl-insta-link {
     font-size: 1.1rem;
-    margin-bottom: 1.5rem;
   }
 
-  .gallery-images {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding: 0 0.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery {
-    padding: 1.5rem 1rem;
+  .gl-doodle-hearts-left {
+    left: -80px;
+    font-size: 2.2rem;
   }
 
-  .gallery h1 {
+  .gl-doodle-plane {
+    left: -120px;
+    top: 90px;
+    width: 64px;
+    height: 64px;
+  }
+
+  .gl-doodle-hearts-right {
+    right: -80px;
     font-size: 2rem;
   }
 
-  .subheading {
-    font-size: 1rem;
-    margin-bottom: 1.2rem;
+  .gl-doodle-sparkles {
+    right: -100px;
+    top: 100px;
+  }
+  
+  .gl-image-card {
+    padding: 8px 8px 24px 8px;
+  }
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 480px) {
+  .gallery-page {
+    padding: 1.5rem 0.5rem 3rem 0.5rem;
+  }
+
+  .gl-title {
+    font-size: 1.65rem;
+  }
+
+  .gl-journey {
+    font-size: 2.2rem;
+  }
+
+  .gl-instagram-banner {
+    padding: 0.6rem 1.1rem;
+    gap: 10px;
+    max-width: 290px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .gl-banner-text {
+    font-size: 0.78rem;
+  }
+
+  .gl-insta-link {
+    font-size: 0.9rem;
+  }
+
+  .gl-badge-speech {
+    width: 28px;
+    height: 28px;
+    font-size: 0.85rem;
+  }
+
+  .gl-doodle {
+    display: none;
   }
 
   .gallery-images {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-    padding: 0 0.25rem;
+    gap: 0.5rem;
   }
 
-  .modal-image {
-    max-width: 95%;
-    max-height: 80%;
+  .gl-image-card {
+    padding: 4px 4px 12px 4px;
   }
 }
+

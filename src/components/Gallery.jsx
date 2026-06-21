@@ -94,22 +94,69 @@ const Gallery = () => {
   ];
 
   return (
-    <div className="gallery">
-      <h1>Follow Our Journey</h1>
-      <p className="subheading">
-        Follow our Instagram page{' '}
-        <a href="https://www.instagram.com/memoroidsbyshehana" target="_blank" rel="noopener noreferrer">
-          @memoroids
-        </a>
-      </p>
-      <div className="gallery-images">
-        {images.map((image, index) => (
-          <img key={index} src={image} alt={`Memory ${index + 1}`} onClick={() => setSelectedImage(image)} />
-        ))}
+    <div className="gallery-page">
+      {/* Cute Scrapbook Header */}
+      <div className="gl-header">
+        {/* Floating doodles */}
+        <div className="gl-doodle gl-doodle-hearts-left">
+          <span>❤</span>
+          <span className="tiny-heart">❤</span>
+        </div>
+        
+        <div className="gl-doodle gl-doodle-plane">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f497a9" strokeWidth="1.5" strokeLinecap="round" width="48" height="48">
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            <path d="M6 18c.5-1 1-1.5 2-1s1.5 1 3 0c1.5-1 2-2 3.5-1.5" strokeDasharray="3 3"/>
+          </svg>
+        </div>
+
+        <div className="gl-doodle gl-doodle-hearts-right">
+          <span>❤</span>
+          <span className="tiny-heart">❤</span>
+          <span>❤</span>
+        </div>
+
+        <div className="gl-doodle gl-doodle-sparkles">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f497a9" strokeWidth="1.8" strokeLinecap="round" width="24">
+            <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5l2.5 2.5M18 6l-2.5 2.5M8.5 15.5L6 18"/>
+          </svg>
+        </div>
+
+        <h1 className="gl-title">
+          Follow Our <br />
+          <span className="gl-journey">Journey <span className="gl-title-heart">❤</span></span>
+        </h1>
+
+        {/* Pill Banner */}
+        <div className="gl-instagram-banner">
+          <p className="gl-banner-text">
+            Follow our Instagram page <br />
+            <a href="https://www.instagram.com/memoroidsbyshehana" target="_blank" rel="noopener noreferrer" className="gl-insta-link">
+              @memoroids
+            </a>
+          </p>
+          <div className="gl-banner-badge">
+            <div className="gl-badge-speech">
+              <span>❤</span>
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* Grid of gallery images */}
+      <div className="gallery-container">
+        <div className="gallery-images">
+          {images.map((image, index) => (
+            <div key={index} className="gl-image-card">
+              <img src={image} alt={`Memory ${index + 1}`} onClick={() => setSelectedImage(image)} />
+            </div>
+          ))}
+        </div>
+      </div>
+
       {selectedImage && (
-        <div className="modal" onClick={() => setSelectedImage(null)}>
-          <img src={selectedImage} alt="Zoomed" className="modal-image" />
+        <div className="gl-modal" onClick={() => setSelectedImage(null)}>
+          <img src={selectedImage} alt="Zoomed" className="gl-modal-image" />
         </div>
       )}
     </div>
