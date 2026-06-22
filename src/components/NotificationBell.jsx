@@ -125,10 +125,7 @@ const NotificationBell = () => {
   return (
     <div className="notification-bell-container" ref={dropdownRef}>
       <button onClick={toggleDropdown} className="bell-button" aria-label="Notifications">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="bell-icon">
-          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-        </svg>
+        <i className="bi bi-bell bell-icon" style={{ fontSize: '20px' }}></i>
         {unreadCount > 0 && <span className="bell-badge">{unreadCount}</span>}
       </button>
 
@@ -145,10 +142,7 @@ const NotificationBell = () => {
           <div className="dropdown-body">
             {notifications.length === 0 ? (
               <div className="empty-notifications">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="empty-bell">
-                  <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                  <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                </svg>
+                <i className="bi bi-bell-slash empty-bell" style={{ fontSize: '36px', color: '#ebd7d0', display: 'block', marginBottom: '8px' }}></i>
                 <p>No new notifications</p>
               </div>
             ) : (
@@ -156,11 +150,7 @@ const NotificationBell = () => {
                 {notifications.map((notif) => (
                   <div key={notif.id} className={`notification-item ${!notif.read ? 'unread' : ''}`}>
                     <div className="notification-icon-circle">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
-                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <path d="M16 10a4 4 0 0 1-8 0"></path>
-                      </svg>
+                      <i className="bi bi-bag-heart-fill" style={{ fontSize: '14px', color: '#fb6f92' }}></i>
                     </div>
                     <div className="notification-content">
                       <p className="notification-text">
