@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
       <div className="p-5">
         <h3 className="text-xl font-bold text-charcoal-gray mb-2 line-clamp-2">{product.name}</h3>
         <p className="text-gray-600 mb-3 text-sm line-clamp-3">{product.description}</p>
-        <p className="text-dusty-rose font-bold text-lg mb-3">${(product.price / 100).toFixed(2)}</p>
+        <p className="text-dusty-rose font-bold text-lg mb-3">₹{(product.price / 100).toFixed(2)}</p>
       </div>
     </div>
   );

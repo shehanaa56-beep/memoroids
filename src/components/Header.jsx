@@ -1,9 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../firebase';
+import NotificationBell from './NotificationBell';
 import './Header.css';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    // Check local storage status
+    const checkAuthStatus = () => {
+      const role = localStorage.getItem('role');
+      const userToken = localStorage.getItem('userToken');
+      const adminToken = localStorage.getItem('adminToken');
+      
+      if (adminToken && role === 'admin') {
+        setIsLoggedIn(true);
+        setIsAdmin(true);
+      } else if (userToken && role === 'user') {
+        setIsLoggedIn(true);
+        setIsAdmin(false);
+      } else {
+        setIsLoggedIn(false);
+        setIsAdmin(false);
+      }
+    };
+
+    // Run initially
+    checkAuthStatus();
+
+    // Listen to Firebase auth changes to keep sync
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+        setIsAdmin(user.email === 'memoroidsbyshehana@gmail.com');
+      } else {
+        // If not authenticated in Firebase, double check localStorage (e.g. static admin login)
+        const role = localStorage.getItem('role');
+        const adminToken = localStorage.getItem('adminToken');
+        if (adminToken && role === 'admin') {
+          setIsLoggedIn(true);
+          setIsAdmin(true);
+        } else {
+          setIsLoggedIn(false);
+          setIsAdmin(false);
+        }
+      }
+    });
+
+    // Also listen to storage changes in case of multi-tab login/logout
+    window.addEventListener('storage', checkAuthStatus);
+
+    return () => {
+      unsubscribe();
+      window.removeEventListener('storage', checkAuthStatus);
+    };
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+    } catch (e) {
+      console.warn('Firebase logout failed:', e);
+    }
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('role');
+    localStorage.removeItem('userName');
+    setIsLoggedIn(false);
+    setIsAdmin(false);
+    window.location.href = '/';
+  };
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -32,14 +102,30 @@ const Header = () => {
         
         <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           {/* Desktop Nav Links */}
-          <ul className="desktop-links">
+          <ul className="desktop-links" style={{ alignItems: 'center' }}>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/shop">Shop</Link></li>
             <li><Link to="/gallery">Gallery</Link></li>
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/reviews">Reviews</Link></li>
             <li><Link to="/custom-orders">Custom Orders</Link></li>
-            <li><Link to="/login">Login</Link></li>
+            {isLoggedIn && (
+              <li style={{ display: 'flex', alignItems: 'center' }}>
+                <NotificationBell />
+              </li>
+            )}
+            {isLoggedIn && isAdmin && (
+              <li><Link to="/admin-dashboard">Admin</Link></li>
+            )}
+            {isLoggedIn ? (
+              <li>
+                <button onClick={handleLogout} className="header-logout-btn">
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <li><Link to="/login">Login</Link></li>
+            )}
           </ul>
 
           {/* Mobile Nav Cards */}
@@ -127,15 +213,48 @@ const Header = () => {
               </div>
             </div>
 
-            <Link to="/login" onClick={closeMenu} className="mobile-menu-card">
-              <span className="card-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fb6f92" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-              </span>
-              <span className="card-label">LOGIN</span>
-            </Link>
+            {isLoggedIn && (
+              <div className="mobile-notification-wrapper">
+                <NotificationBell />
+              </div>
+            )}
+
+            {isLoggedIn && isAdmin && (
+              <Link to="/admin-dashboard" onClick={closeMenu} className="mobile-menu-card">
+                <span className="card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fb6f92" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                    <line x1="9" y1="21" x2="9" y2="9" />
+                    <line x1="15" y1="21" x2="15" y2="9" />
+                    <line x1="3" y1="9" x2="21" y2="9" />
+                  </svg>
+                </span>
+                <span className="card-label">ADMIN DASHBOARD</span>
+              </Link>
+            )}
+
+            {isLoggedIn ? (
+              <button onClick={() => { handleLogout(); closeMenu(); }} className="mobile-menu-card mobile-logout-btn">
+                <span className="card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fb6f92" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <polyline points="16 17 21 12 16 7" />
+                    <line x1="21" y1="12" x2="9" y2="12" />
+                  </svg>
+                </span>
+                <span className="card-label">LOGOUT</span>
+              </button>
+            ) : (
+              <Link to="/login" onClick={closeMenu} className="mobile-menu-card">
+                <span className="card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fb6f92" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </span>
+                <span className="card-label">LOGIN</span>
+              </Link>
+            )}
           </div>
         </nav>
 
