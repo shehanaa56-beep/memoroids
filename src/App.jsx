@@ -16,6 +16,7 @@ import Moving from './components/Moving';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import AdminDashboard from './components/AdminDashboard';
+import DigitalInvitations from './components/DigitalInvitations';
 import InstallBanner from './components/InstallBanner';
 import { Routes, Route } from 'react-router-dom';
 
@@ -38,6 +39,7 @@ function App() {
           </>
         } />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/invitations" element={<DigitalInvitations />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<About />} />
         <Route path="/reviews" element={<Reviews />} />

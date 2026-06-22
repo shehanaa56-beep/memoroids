@@ -205,6 +205,7 @@ I will send my custom photos below.`;
               <option value="Ring Album">Ring Album</option>
               <option value="Scrapbook">Scrapbook</option>
               <option value="Poloroid Stand">Polaroid Stand</option>
+              <option value="Digital Invitation">Digital Invitation</option>
               <option value="Custom Gift">Custom Gift</option>
             </select>
           </div>

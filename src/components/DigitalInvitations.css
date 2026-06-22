@@ -1,0 +1,869 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ============================================
+   DIGITAL INVITATIONS PAGE
+   ============================================ */
+
+:root {
+  --di-pink: #e8739a;
+  --di-pink-light: #fce4ec;
+  --di-gold: #c9a96e;
+  --di-gold-light: #f5e6c8;
+  --di-cream: #fdf6f0;
+  --di-dark: #2a2a2a;
+  --di-muted: #8a7070;
+  --di-font-serif: 'Playfair Display', Georgia, serif;
+  --di-font-script: 'Great Vibes', cursive;
+  --di-font-sans: 'Outfit', sans-serif;
+}
+
+.di-page {
+  font-family: var(--di-font-sans);
+  color: var(--di-dark);
+  overflow-x: hidden;
+}
+
+/* ===== HERO SECTION ===== */
+.di-hero {
+  background: linear-gradient(170deg, #fdf2f0 0%, #fce8ec 35%, #fef6f3 70%, #fdeef2 100%);
+  padding: 60px 20px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative floral pseudo-elements */
+.di-floral {
+  position: absolute;
+  width: 180px;
+  height: 320px;
+  pointer-events: none;
+  opacity: 0.2;
+  background: radial-gradient(ellipse, #f4a0bc 0%, transparent 70%);
+}
+
+.di-floral-left {
+  left: -40px;
+  bottom: 60px;
+  border-radius: 0 50% 50% 0;
+  transform: rotate(-15deg);
+}
+
+.di-floral-right {
+  right: -40px;
+  bottom: 60px;
+  border-radius: 50% 0 0 50%;
+  transform: rotate(15deg);
+}
+
+/* Floating sparkles */
+.di-sparkle {
+  position: absolute;
+  color: var(--di-gold);
+  opacity: 0.35;
+  pointer-events: none;
+  font-size: 14px;
+}
+
+.di-sp-1 { top: 80px; right: 15%; font-size: 10px; }
+.di-sp-2 { top: 160px; left: 8%; font-size: 12px; }
+.di-sp-3 { top: 45%; right: 10%; font-size: 16px; color: var(--di-pink); opacity: 0.3; }
+.di-sp-4 { bottom: 30%; left: 6%; font-size: 18px; color: var(--di-pink); opacity: 0.25; }
+.di-sp-5 { bottom: 15%; right: 20%; font-size: 8px; }
+
+/* Hero heading */
+.di-hero-heading {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 40px;
+}
+
+.di-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--di-gold);
+  margin-bottom: 8px;
+}
+
+.di-title {
+  font-family: var(--di-font-serif);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--di-dark);
+  line-height: 1.1;
+  margin: 0 0 16px;
+  letter-spacing: 2px;
+}
+
+.di-title-script {
+  font-family: var(--di-font-script);
+  font-weight: 400;
+  font-size: 2.8rem;
+  color: var(--di-pink);
+  letter-spacing: 0;
+  display: block;
+  margin-top: -4px;
+}
+
+.di-subtitle {
+  font-size: 0.95rem;
+  color: var(--di-muted);
+  line-height: 1.7;
+  max-width: 360px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* ===== PHONE MOCKUP SECTION ===== */
+.di-mockup-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 40px;
+  max-width: 500px;
+  min-height: 420px;
+}
+
+/* Phone frame */
+.di-phone-frame {
+  position: relative;
+  width: 220px;
+  height: 400px;
+  background: linear-gradient(145deg, #f7f0ea, #efe4dc);
+  border-radius: 36px;
+  box-shadow:
+    0 20px 60px rgba(180, 120, 100, 0.18),
+    0 2px 4px rgba(180, 120, 100, 0.08),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  border: 3px solid var(--di-gold-light);
+  padding: 10px;
+  z-index: 2;
+}
+
+.di-phone-notch {
+  width: 80px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  margin: 4px auto 8px;
+}
+
+.di-phone-screen {
+  width: 100%;
+  height: calc(100% - 18px);
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: #fffaf5;
+}
+
+.di-phone-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Feature badges around phone */
+.di-feat-badge {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 3;
+}
+
+.di-feat-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--di-pink-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--di-pink);
+  box-shadow: 0 4px 14px rgba(232, 115, 154, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.di-feat-badge:hover .di-feat-icon-circle {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(232, 115, 154, 0.22);
+}
+
+.di-feat-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--di-muted);
+  text-align: center;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: pre-line;
+}
+
+/* Badge positions */
+.feat-tl { top: 20px; left: 0; }
+.feat-tr { top: 20px; right: 0; }
+.feat-bl { bottom: 40px; left: 0; }
+.feat-br { bottom: 40px; right: 0; }
+
+/* ===== PERFECT FOR ===== */
+.di-perfect-for {
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.di-pf-title {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--di-muted);
+  margin-bottom: 16px;
+}
+
+.di-pf-chips {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.di-pf-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1.5px solid rgba(201, 169, 110, 0.25);
+  border-radius: 14px;
+  padding: 12px 16px;
+  min-width: 70px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.di-pf-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(201, 169, 110, 0.15);
+}
+
+.di-pf-chip i {
+  font-size: 22px;
+  color: var(--di-gold);
+}
+
+.di-pf-chip span {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--di-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== CTA BUTTONS ===== */
+.di-cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.di-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #e8739a, #d4607f);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  font-family: var(--di-font-sans);
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(232, 115, 154, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.di-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(232, 115, 154, 0.4);
+}
+
+.di-cta-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--di-pink);
+  border: 2px solid var(--di-pink);
+  border-radius: 50px;
+  padding: 12px 32px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: var(--di-font-sans);
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.di-cta-outline:hover {
+  background: var(--di-pink);
+  color: #ffffff;
+}
+
+/* ===== OUR WORKS SHOWCASE ===== */
+.di-showcase {
+  background: var(--di-cream);
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.di-showcase-heading {
+  margin-bottom: 45px;
+}
+
+.di-section-title {
+  font-family: var(--di-font-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--di-dark);
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+.di-section-subtitle {
+  font-size: 0.95rem;
+  color: var(--di-muted);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.di-showcase-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.di-showcase-card {
+  width: 100%;
+  max-width: 290px;
+  background: transparent;
+  transition: transform 0.3s;
+}
+
+.di-showcase-card:hover {
+  transform: translateY(-4px);
+}
+
+.di-showcase-card .di-iphone-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #ffffff;
+  border-radius: 40px;
+  box-shadow: 
+    0 15px 35px rgba(180, 120, 100, 0.15),
+    0 2px 5px rgba(0, 0, 0, 0.05);
+  border: 8px solid #ffffff;
+  outline: 1.5px solid rgba(201, 169, 110, 0.3);
+  padding: 0;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.di-showcase-card .di-iphone-notch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 12px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+  z-index: 10;
+  border: 1px solid rgba(201, 169, 110, 0.25);
+}
+
+.di-showcase-card .di-iphone-screen {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+}
+
+.di-showcase-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+.di-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--di-pink);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(180, 120, 100, 0.25);
+  transition: transform 0.2s, background-color 0.2s;
+  z-index: 5;
+}
+
+.di-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  background-color: #ffffff;
+}
+
+.di-showcase-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 4px 0;
+  width: 100%;
+}
+
+.di-showcase-title {
+  font-family: var(--di-font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--di-dark);
+  text-align: left;
+}
+
+.di-showcase-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.di-showcase-duration {
+  font-size: 0.78rem;
+  color: var(--di-muted);
+  font-weight: 500;
+}
+
+.di-showcase-meta i {
+  font-size: 1rem;
+  color: var(--di-pink);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.di-showcase-meta i:hover {
+  transform: scale(1.2);
+}
+
+.di-showcase-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+
+/* ===== HOW IT WORKS ===== */
+.di-how {
+  background: linear-gradient(160deg, #fce8ec, #fdf6f0);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.di-how-heading {
+  margin-bottom: 36px;
+}
+
+.di-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.di-step {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px 20px;
+  width: 180px;
+  box-shadow: 0 4px 16px rgba(180, 120, 100, 0.08);
+  border: 1.5px solid rgba(232, 115, 154, 0.12);
+  transition: transform 0.3s;
+}
+
+.di-step:hover {
+  transform: translateY(-3px);
+}
+
+.di-step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--di-pink), #d4607f);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--di-font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 auto 12px;
+}
+
+.di-step h4 {
+  font-family: var(--di-font-serif);
+  font-size: 0.95rem;
+  margin: 0 0 6px;
+  color: var(--di-dark);
+}
+
+.di-step p {
+  font-size: 0.78rem;
+  color: var(--di-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.di-step-connector {
+  color: var(--di-gold);
+  font-size: 18px;
+  opacity: 0.5;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 600px) {
+  .di-hero {
+    padding: 30px 14px 36px;
+  }
+
+  .di-hero-heading {
+    margin-bottom: 24px;
+  }
+
+  .di-label {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+  }
+
+  .di-title {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+
+  .di-title-script {
+    font-size: 1.8rem;
+  }
+
+  .di-subtitle {
+    font-size: 0.8rem;
+    max-width: 300px;
+  }
+
+  /* Phone mockup — smaller and properly contained */
+  .di-mockup-section {
+    min-height: auto;
+    max-width: 100%;
+    margin: 0 auto 28px;
+    padding: 0 10px;
+  }
+
+  .di-phone-frame {
+    width: 160px;
+    height: 290px;
+    border-radius: 26px;
+    padding: 8px;
+    border-width: 2px;
+  }
+
+  .di-phone-notch {
+    width: 50px;
+    height: 4px;
+    margin: 3px auto 5px;
+  }
+
+  .di-phone-screen {
+    border-radius: 18px;
+  }
+
+  /* Feature badges — tuck closer to phone edges */
+  .di-feat-icon-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .di-feat-label {
+    font-size: 0.5rem;
+    letter-spacing: 0;
+  }
+
+  .feat-tl { top: 10px; left: 2px; }
+  .feat-tr { top: 10px; right: 2px; }
+  .feat-bl { bottom: 20px; left: 2px; }
+  .feat-br { bottom: 20px; right: 2px; }
+
+  /* Perfect for chips */
+  .di-perfect-for {
+    margin-bottom: 22px;
+  }
+
+  .di-pf-title {
+    font-size: 0.6rem;
+    margin-bottom: 12px;
+  }
+
+  .di-pf-chips {
+    gap: 8px;
+  }
+
+  .di-pf-chip {
+    padding: 8px 10px;
+    min-width: 55px;
+    border-radius: 10px;
+    gap: 4px;
+  }
+
+  .di-pf-chip i { font-size: 16px; }
+  .di-pf-chip span { font-size: 0.55rem; }
+
+  /* CTA buttons */
+  .di-cta-group {
+    gap: 10px;
+  }
+
+  .di-cta-primary {
+    padding: 11px 24px;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+  }
+
+  .di-cta-outline {
+    padding: 9px 20px;
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+  }
+
+  /* Showcase gallery */
+  .di-showcase {
+    padding: 40px 14px;
+  }
+
+  .di-showcase-heading {
+    margin-bottom: 24px;
+  }
+
+  .di-section-title {
+    font-size: 1.5rem;
+  }
+
+  .di-showcase-list {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .di-showcase-card {
+    max-width: 140px;
+  }
+
+  .di-showcase-card .di-iphone-frame {
+    border-radius: 20px;
+    border-width: 4px;
+    outline-width: 1px;
+  }
+
+  .di-showcase-card .di-iphone-notch {
+    width: 45px;
+    height: 6px;
+    top: 4px;
+    border-radius: 4px;
+  }
+
+  .di-showcase-card .di-iphone-screen {
+    border-radius: 16px;
+  }
+
+  .di-play-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .di-showcase-info {
+    padding: 8px 2px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .di-showcase-title {
+    font-size: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .di-showcase-meta {
+    width: 100%;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .di-showcase-duration {
+    font-size: 0.65rem;
+  }
+
+  .di-showcase-meta i {
+    font-size: 0.82rem;
+  }
+
+  /* How it works */
+  .di-how {
+    padding: 32px 14px;
+  }
+
+  .di-how-heading {
+    margin-bottom: 20px;
+  }
+
+  .di-steps {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .di-step-connector {
+    display: none;
+  }
+
+  .di-step {
+    width: 100%;
+    max-width: 290px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 16px;
+    gap: 14px;
+  }
+
+  .di-step-num {
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .di-step-text {
+    text-align: left;
+  }
+
+  .di-step h4 {
+    font-size: 0.85rem;
+    margin: 0 0 2px;
+  }
+
+  .di-step p {
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+
+  /* Hide some sparkles on mobile */
+  .di-sp-3, .di-sp-4 {
+    display: none;
+  }
+
+  .di-floral {
+    width: 100px;
+    height: 200px;
+    opacity: 0.12;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 767px) {
+  .di-title {
+    font-size: 2.4rem;
+  }
+
+  .di-title-script {
+    font-size: 2.3rem;
+  }
+
+  .di-phone-frame {
+    width: 200px;
+    height: 360px;
+  }
+}
+
+@media (min-width: 768px) {
+  .di-title {
+    font-size: 3.6rem;
+  }
+
+  .di-title-script {
+    font-size: 3.4rem;
+  }
+
+  .di-phone-frame {
+    width: 260px;
+    height: 460px;
+  }
+
+  .di-mockup-section {
+    min-height: 500px;
+    max-width: 600px;
+  }
+
+  .di-feat-icon-circle {
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .di-feat-label {
+    font-size: 0.7rem;
+  }
+
+  .di-showcase-list {
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    max-width: 900px;
+  }
+
+  .di-section-title {
+    font-size: 2.4rem;
+  }
+}

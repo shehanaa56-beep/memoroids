@@ -105,6 +105,7 @@ const Header = () => {
           <ul className="desktop-links" style={{ alignItems: 'center' }}>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/shop">Shop</Link></li>
+            <li><Link to="/invitations">Invitations</Link></li>
             <li><Link to="/gallery">Gallery</Link></li>
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/reviews">Reviews</Link></li>
@@ -158,6 +159,13 @@ const Header = () => {
                 </svg>
               </span>
               <span className="card-label">SHOP</span>
+            </Link>
+
+            <Link to="/invitations" onClick={closeMenu} className="mobile-menu-card">
+              <span className="card-icon">
+                <i className="bi bi-envelope-heart" style={{ fontSize: '20px', color: '#fb6f92' }}></i>
+              </span>
+              <span className="card-label">INVITATIONS</span>
             </Link>
 
             <Link to="/gallery" onClick={closeMenu} className="mobile-menu-card">
