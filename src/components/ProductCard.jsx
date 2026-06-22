@@ -1,8 +1,19 @@
 import React from 'react';                                        
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate('/custom-orders');
+  };
+
   return (
-    <div className="product-card bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <div 
+      className="product-card bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+      onClick={handleCardClick}
+      style={{ cursor: 'pointer' }}
+    >
       <div className="relative overflow-hidden rounded-t-xl">
         <img src={product.image} alt={product.name} className="product-card-image transition-transform duration-300 hover:scale-105" />
         {/* Removed category badge button as per user request */}
